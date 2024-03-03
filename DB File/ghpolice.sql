@@ -214,17 +214,6 @@ ALTER TABLE `investigation`
 COMMIT;
 
 
-DELIMITER //
-
-CREATE TRIGGER login_trigger BEFORE INSERT ON userlogin
-FOR EACH ROW
-BEGIN
-    IF NEW.staffid = 'cid' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot insert login for "cid" user';
-    END IF;
-END//
-
-DELIMITER ;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
